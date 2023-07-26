@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+body {
+    background: transparent;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+*:not(input, checkbox, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Non-prefixed version, currently */
+}
+
+.popup_container {
+    position: absolute;
+    z-index: 1000;
+    left: 50%;
+    top: 0;
+}
+
+#H5AlertView {
+    width: 220px;
+    height: 300px;
+    position: absolute;
+    left: -110px;
+    top: 50px;
+    text-align: center;
+    zoom: 0.8;
+}
+
+#title-text {
+    padding-top: 0px;
+    font-size: 18px;
+    color: #494949;
+}
+
+#info-text {
+    padding: 10px;
+    color: #494949;
+}
+
+button {
+    width: 100%;
+    height: 60px;
+    color: #fff;
+    background-color: #23b574;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+
+</style>
+
+<script>
+setButtonImage('https://gchat.qpic.cn/gchatpic_new/0/0-0-C9A332C000AA42B7C7EAA76A13BD3EDB/0')
+</script>
+
+</head>
+
+<body>
+<div class="popup_container">
+<div id="H5AlertView">
+<script>
+
+function pzx() {
+  setInterval(function()
+  {
+  h5gg.clearResults();
+        h5gg.searchNumber('1.8', 'F32', '0x000000000', '0x200000000');
+        var count = h5gg.getResultsCount();
+        var r = h5gg.getResults(count);
+        var cnt = 0;
+        for(var i=0; i<count; i++) {
+            var addr1 = r[i].address;
+            
+            
+var dizhi1 = (Number(addr1) + -4);
+var shuzhi1 = h5gg.getValue(dizhi1, "F32");
+
+ var shuzhi2 = h5gg.getValue((Number(addr1) + 140), "F32");
+ 
+  var shuzhi3 = h5gg.getValue((Number(addr1) + 152), "F32");
+
+  var shuzhi4 = h5gg.getValue((Number(addr1) + 168), "F32");
+if(
+shuzhi1 == 0.6  &&
+shuzhi2 == 1 &&
+shuzhi3 ==0.6 &&
+shuzhi4 ==0.4
+) 
+{
+h5gg.setValue(dizhi1,6, "F32");
+
+           
+
+           }
+           h5gg.clearResults();
+      }
+
+},2000)
+alert("开启成功QQ2825961339");
+
+        
+        }
+
+</script>
+<div><button onclick="pzx()">开启自动碰撞箱</button>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+<!doctype html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>show_time</title>  
+<style>  
+body {  
+    padding-top: -10px;  
+}  
+#main {  
+    margin: auto;  
+    text-align: center;  
+    width: 300px;  
+    height: 25px;   
+    background-color: #23b574;  
+}  
+#show_time0,#show_time {  
+width:300px;
+height:30px;
+    color: #fff;  
+}  
+</style>  
+</head> 
+<body>  
+<div id="main">  
+<div id="show_time">  
+<script>  
+//这里代码多了几行，但是不会延迟显示，速度比较好，格式可以自定义，是理想的时间显示
+setInterval("fun(show_time)",1);
+function fun(timeID){ 
+var date = new Date();  //创建对象  
+var y = date.getFullYear();     //获取年份  
+var m =date.getMonth()+1;   //获取月份  返回0-11  
+var d = date.getDate(); // 获取日  
+var w = date.getDay();   //获取星期几  返回0-6   (0=星期天) 
+var ww = ' 星期'+'日一二三四五六'.charAt(new Date().getDay()) ;//星期几
+var h = date.getHours();  //时
+var minute = date.getMinutes()  //分
+var s = date.getSeconds(); //秒
+var sss = date.getMilliseconds() ; //毫秒
+if(m<10){
+m = "0"+m;
+}
+if(d<10){
+d = "0"+d;
+}
+if(h<10){
+h = "0"+h;
+}
+if(minute<10){
+minute = "0"+minute;
+}
+if(s<10){
+s = "0"+s;
+}
+if(sss<10){
+sss = "00"+sss;
+}else if(sss<100){
+sss = "0"+sss;
+}
+document.getElementById(timeID.id).innerHTML =  y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s+"."+sss+"  "+ww;
+//document.write(y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s);  
+  }
+</script>  
+</div>  
+</div>  
+</body>  
+</html>
