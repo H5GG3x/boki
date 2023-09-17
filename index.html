@@ -1,11 +1,176 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>My Image Gallery</title>
+    <style>
+	  @keyframes colorChange {
+	    0% {
+	      color: red;
+	    }
+	    50% {
+	      color: green;
+	    }
+	    100% {
+	      color: blue;
+	    }
+	  }
+
+    @keyframes glowing {
+      0% {
+        color: #ff0000;
+        text-shadow: 0 0 10px #ff0000;
+      }
+      50% {
+        color: #00ff00;
+        text-shadow: 0 0 20px #00ff00;
+      }
+      100% {
+        color: #0000ff;
+        text-shadow: 0 0 30px #0000ff;
+      }
+    }
+    
+    h1 {
+      animation: glowing 6s infinite;
+	  font-size: 150%;
+    }
+		
+  h1, button {
+    position: relative;  /* 使 z-index 生效 */
+    z-index: 2;  /* 设置 z-index 为 2，使其位于 img 之上 */
+}
+
+img {
+    position: absolute;
+      /* 设置 z-index 为 1，使其位于 h1 和 button 之下 */
+    transition: top 1.5s, left 1.5s;  /* 添加平滑动画 */
+}
+
+        button {
+            width: 100px;  /* 设置按钮宽度为 100px */
+            height: 50px; /* 设置按钮高度为 50px */
+        }
+    </style>
 </head>
 <body>
-    <img src="https://z1.ax1x.com/2023/09/17/pPhwjaT.jpg" alt="pPhwjaT.jpg" border="0" />
-    <br/>
-    <img src="https://z1.ax1x.com/2023/09/17/pPhU454.md.jpg" alt="pPhU454.jpg" border="0" />
+    <h1>郑新俊的博ki窝</h1>
+<audio id="myAudio">
+  <source src="https://static.jaron.top//music//jiege//京,杰哥%20-%20不要啦！杰哥.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<p>
+<button onclick="playAudio()" type="button">亩戈专场</button>
+<button onclick="pauseAudio()" type="button">暂停音乐</button>
+</p>
+
+<script>
+var myAudio = document.getElementById("myAudio");
+
+function playAudio() { 
+  myAudio.play(); 
+} 
+
+function pauseAudio() { 
+  myAudio.pause(); 
+} 
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<body>
+<audio id="myAudio">
+  <source src="http://fsandroid.tx.kugou.com/202309172253/e79bab9a6eda73904649595424d4a657/v3/4bbd1cc6c2c380d28d2987f4a56d9df4/yp/full/a1005_u1158005158_d10y9o30bjpz03lesql1tsuwv_p2_mo23_mx64473829_qflac_s1402473479.flac" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<p>
+<button onclick="playAudio()" type="button">退后</button>
+<button onclick="pauseAudio()" type="button">暂停音乐</button>
+</p>
+
+
+
+<script>
+var myAudio = document.getElementById("myAudio");
+
+function playAudio() { 
+  myAudio.play(); 
+} 
+
+function pauseAudio() { 
+  myAudio.pause(); 
+} 
+</script>
+
+</body>
+</html>
+
+
+    <img id="img1" src="https://z1.ax1x.com/2023/09/17/pPhwjaT.jpg" alt="pPhwjaT.jpg" border="0" />
+    <img id="img2" src="https://z1.ax1x.com/2023/09/17/pPhU454.md.jpg" alt="pPhU454.jpg" border="0" />
+
+<!-- 用于播放声音的audio元素 -->
+<audio id="audio1" src="https://static.jaron.top/music/cxk/左飞%20-%20大悲鸡咒.mp3" preload="auto"></audio>
+<audio id="audio2" src="https://static.jaron.top/music/cxk/左飞%20-%20大悲鸡咒.mp3" preload="auto"></audio>
+
+    <script>
+        window.onload = function() {
+            // 获取图片和音频元素
+            const img1 = document.getElementById('img1');
+            const img2 = document.getElementById('img2');
+            const audio1 = document.getElementById('audio1');
+            const audio2 = document.getElementById('audio2');
+
+            // 为图片添加点击事件
+            img1.addEventListener('click', () => {
+                if (audio1.paused) {
+                    audio1.play();
+                } else {
+                    audio1.pause();
+                }
+            });
+            img2.addEventListener('click', () => {
+                if (audio2.paused) {
+                    audio2.play();
+                } else {
+                    audio2.pause();
+                }
+            });
+
+            // 每隔一段时间移动图片
+            setInterval(() => {
+                moveImageRandomly(img1);
+                moveImageRandomly(img2);
+            }, 1500);
+        }
+
+        function moveImageRandomly(img) {
+            // 获取浏览器可视窗口的宽度和高度
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // 获取图片的宽度和高度
+            const imageWidth = img.offsetWidth;
+            const imageHeight = img.offsetHeight;
+
+            // 获取 h1 和 button 的高度
+            const h1Height = document.querySelector('h1').offsetHeight;
+            const buttonHeight = Math.max(...Array.from(document.querySelectorAll('button')).map(button => button.offsetHeight));
+
+            // 生成随机的左侧和顶部位置，减去 h1 和 button 的高度
+            const randomLeft = Math.floor(Math.random() * (windowWidth - imageWidth));
+            const randomTop = Math.floor(Math.random() * (windowHeight - imageHeight - h1Height - buttonHeight)) + h1Height + buttonHeight;
+
+            // 更新图片的位置
+            img.style.left = `${randomLeft}px`;
+            img.style.top = `${randomTop}px`;
+        }
+    </script>
 </body>
 </html>
